@@ -1,16 +1,16 @@
 # YelpCamp
 YelpCamp is a Node.js web application with RESTful routing project from the Udemy course - The Web Developer Bootcamp by Colt Steele
 
-Features:
-Authentication:
+To start the program:
+-Download it and run it by console with "node app.js"
+-Go on you browser and type "localhost:8080"
+-Enjoy
 
-User signup with username and password (Create your own)
+To create account:
+-Go to sign-up and create your own username and password
 
-User login with username and password (Enter the username and password you have created before)
-
-Add campground with form dedicated
-
-Display campground location on Google Maps
+To add campground:
+-You need to be logged with your own account (the username and password you have created before)
 
 ========================================================================================================================================
                                                               Built with
