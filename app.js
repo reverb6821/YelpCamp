@@ -11,28 +11,36 @@ var express = require("express"),
     User = require("./models/user"),
     seedDB = require("./seeds")
 
-//===================================ROUTES=================================================
+//requiring routes
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index")
 
-mongoose.connect("mongodb://localhost/yelp_camp", {
-    useNewUrlParser: true
+// Mongo MLab Heroku
+mongoose.connect("mongodb://heroku_xpjv4qf9:FNPtiJ8ScbiXyJ@ds161780.mlab.com:61780/heroku_xpjv4qf9", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
+
+// Mongo Local
+//mongoose.connect("mongodb://localhost/yelpcamp", {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true
+//});
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.set('views', __dirname + '/views');
 app.use(methodOverride("_method"));
 app.use(flash());
-// seedDB(); //DATABASE
+seedDB(); //seed the database
 
-//========================CONFIGURAZIONE PASSPORT=========================================
+
+// PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret: "Wigle wigle wigle!",
+    secret: "nice camp!",
     resave: false,
     saveUninitialized: false
 }));
@@ -51,9 +59,11 @@ app.use(function(req, res, next) {
 
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
 
-
-app.listen(8080, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("The YelpCamp Server Has Started!");
 });
+
+//app.listen(8080, function() {
+//    console.log("The YelpCamp Server Has Started!");
+//});

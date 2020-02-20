@@ -1,9 +1,42 @@
 <% include ./partials/header %> 
-<h1>Sign Up!</h1>
 
-<form action="/register" method="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Sign Up</button>
-</form>
+<div>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <!-- Welcome <div> -->
+                                <div class="text-center">
+                                    <h3 class="login-heading mb-4" align=”center”>Welcome</h3>
+                                    <p align=”center”>Create your account now!</p>
+                                </div>
+                                <!-- Login Form-->
+                                <form action="/register" method="post">
+                                    <!-- Email Form-->
+                                    <label>Username</label>
+                                    <div class="form-label-group">
+                                        <input  type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+                                        
+                                    </div>
+                                    <!-- Password Form-->
+                                    <label>Password</label>
+                                    <div class="form-label-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>     
+                                    </div>
+                                    <!-- Sign-in Button -->
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <% include ./partials/footer %> 

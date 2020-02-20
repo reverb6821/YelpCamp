@@ -14,7 +14,9 @@
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= campground.image %>">
                 <div class="caption-full">
-                    <h4 class="pull-right">$<%= campground.price %>/night</h4>
+                    <h4 class="pull-right">
+                        $<%= campground.cost %>/night
+                    </h4>
                     <h4><a><%=campground.name%></a></h4>
                     <p><%= campground.description %></p>
                     <p>
@@ -33,8 +35,9 @@
                     <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
                 <hr>
+                <div class="row">
                 <% campground.comments.forEach(function(comment){ %>
-                    <div class="row">
+                    
                         <div class="col-md-12">
                             <strong><%= comment.author.username %></strong>
                             <span class="pull-right">10 days ago</span>
@@ -42,8 +45,7 @@
                                 <%= comment.text %> 
                             </p>
                         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                            <a class="btn btn-xs btn-warning" 
-                               href="/campgrounds/<%=campground._id %>/comments/<%=comment._id %>/edit">Edit</a>
+                            <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id %>/comments/<%=comment._id %>/edit">Edit</a>
                             <form id="delete-form" action="/campgrounds/<%=campground._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
                                 <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                             </form>
@@ -54,27 +56,27 @@
             </div>
         </div>
     </div>
-    <a href="/campgrounds">Go back</a> 
 </div>
+
 <script>
   function initMap() {
-    let lat = <%= campground.lat %>,
-        lng = <%= campground.lng %>,
-        center = { lat, lng };
-    let map = new google.maps.Map(document.getElementById("map"), {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: center,
         scrollwheel: false
     });
-    let contentString = `
-      <h4><%= campground.name %></h4>
-      <p><em><%= campground.location %></em></p>
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
       <p><%= campground.description %></p>
     `
-    let infowindow = new google.maps.InfoWindow({
+    var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
-    let marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         position: center,
         map: map
     });
@@ -83,5 +85,6 @@
     });
   }
 </script>
-<script async defer src="<%= process.env.GOOGLEMAPSAPI%>"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY-HERE&callback=initMap"></script>
+
 <% include ../partials/footer %>

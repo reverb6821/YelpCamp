@@ -4,7 +4,7 @@ var Comment = require("./models/comment");
 
 var data = [{
         name: "Cloud's Rest",
-        image: "https://cdn.pixabay.com/photo/2019/06/28/03/07/camping-4303357_960_720.jpg",
+        image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     },
     {
@@ -18,32 +18,36 @@ var data = [{
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     },
     {
-        name: "Mountain's Valley",
-        image: "https://cdn.pixabay.com/photo/2019/10/03/00/02/camping-4522221_960_720.jpg",
-        description: "belle tende"
+        name: "Valley of Plenty",
+        image: "https://cdn.pixabay.com/photo/2015/09/02/13/24/mountains-919040_960_720.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     },
     {
-        name: "High Garden",
-        image: "https://cdn.pixabay.com/photo/2019/10/03/00/02/camping-4522221_960_720.jpg",
-        description: "Ottimo per rilassarsi"
+        name: "Aard Skellige",
+        image: "https://cdn.pixabay.com/photo/2015/03/26/09/41/mountain-690104_960_720.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+    }, {
+        name: "Blackburn",
+        image: "https://cdn.pixabay.com/photo/2015/07/10/17/24/night-839807_960_720.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     }
 ]
 
 function seedDB() {
-    //Rimuove tutti i campground
+    //Remove all campgrounds
     Campground.remove({}, function(err) {
         if (err) {
             console.log(err);
         }
         console.log("removed campgrounds!");
-        //Aggiunge qualche campgrounds
+        //add a few campgrounds
         data.forEach(function(seed) {
             Campground.create(seed, function(err, campground) {
                 if (err) {
                     console.log(err)
                 } else {
                     console.log("added a campground");
-                    //Crea un commento
+                    //create a comment
                     Comment.create({
                         text: "This place is great, but I wish there was internet",
                         author: "Homer"
@@ -60,7 +64,7 @@ function seedDB() {
             });
         });
     });
-
+    //add a few comments
 }
 
 module.exports = seedDB;
