@@ -3,9 +3,9 @@ YelpCamp is a Node.js web application with RESTful routing project from the Udem
 <hr>
 <a href="https://yelpcamp-ap.herokuapp.com/">Live Demo</a>
 <hr>
-Features
+<b>Features</b>
 <ul><b>Authentication:</b>
-  <li>User login with username and password (You can create one, or just log in with Username: user Pass: 1234 </li>
+  <li>User login with username and password (You can create one, or just log in with Username: user Pass: 1234)</li>
 </ul>
 <ul><b>Authorization:</b>
   <li>One cannot manage posts and view user profile without being authenticated</li>
