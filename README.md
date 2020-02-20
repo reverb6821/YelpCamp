@@ -10,7 +10,6 @@ YelpCamp is a Node.js web application with RESTful routing project from the Udem
 <ul><b>Authorization:</b>
   <li>One cannot manage posts and view user profile without being authenticated</li>
   <li>One cannot edit or delete posts and comments created by other users</li>
-  <li>Admin can manage all posts and comments</li>
 </ul>
 <ul><b>Manage campground posts with basic functionalities:</b>
   <li>Create, edit and delete posts and comments</li>
